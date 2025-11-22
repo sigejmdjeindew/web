@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secure Firebase Chat</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <button id="login-btn">Login with Google</button>
+</header>
+
+<div id="chat-container" style="display:none;">
+  <div id="rooms">
+    <div data-room="general" class="active">#general</div>
+    <div data-room="gaming">#gaming</div>
+    <div data-room="random">#random</div>
+  </div>
+  <div id="chat">
+    <div id="messages"></div>
+    <div id="input-container">
+      <input type="text" id="input" placeholder="Type a message..." />
+      <button id="send">Send</button>
+    </div>
+  </div>
+</div>
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
