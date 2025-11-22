@@ -20,13 +20,17 @@ const db = firebase.database();
 let currentUser = null;
 let currentRoom = "general";
 
+// -------------------------------
 // Google Login
+// -------------------------------
 document.getElementById('login-btn').onclick = () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   auth.signInWithPopup(provider);
 };
 
-// Auth state
+// -------------------------------
+// Auth state change
+// -------------------------------
 auth.onAuthStateChanged(user => {
   if (user) {
     currentUser = user;
@@ -41,7 +45,9 @@ auth.onAuthStateChanged(user => {
   }
 });
 
-// Send message
+// -------------------------------
+// Send Message
+// -------------------------------
 document.getElementById('send').onclick = () => {
   const text = document.getElementById('input').value.trim();
   if (!text) return;
@@ -56,7 +62,9 @@ document.getElementById('send').onclick = () => {
   document.getElementById('input').value = "";
 };
 
-// Load messages
+// -------------------------------
+// Load Messages
+// -------------------------------
 function loadMessages(room) {
   const messagesDiv = document.getElementById('messages');
   messagesDiv.innerHTML = '';
@@ -83,7 +91,9 @@ function loadMessages(room) {
   });
 }
 
-// Switch rooms
+// -------------------------------
+// Switch Rooms
+// -------------------------------
 document.querySelectorAll('#rooms div').forEach(roomDiv => {
   roomDiv.onclick = () => {
     document.querySelectorAll('#rooms div').forEach(d => d.classList.remove('active'));
@@ -93,7 +103,9 @@ document.querySelectorAll('#rooms div').forEach(roomDiv => {
   };
 });
 
-// Online status
+// -------------------------------
+// Online Status
+// -------------------------------
 function setUserOnlineStatus(isOnline) {
   if (!currentUser) return;
   const userStatusRef = db.ref(`status/${currentUser.uid}`);
